@@ -1,0 +1,23 @@
+package mm.com.repository;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import mm.com.entity.Category;;
+
+
+ 
+
+
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, Long> {	
+	@Query("select c from Category c where status = 1 order by name asc")
+	List<Category> findAllInOrderByName();
+	
+	@Query("select c from Category c where status = 2 order by name asc")
+	List<Category> findAllOutOrderByName();
+}
